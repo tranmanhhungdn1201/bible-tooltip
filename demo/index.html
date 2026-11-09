@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vietnamese Bible Tooltip — Bản Thử Nghiệm (Demo)</title>
+  <link rel="stylesheet" href="../dist/vietnamese-bible-tooltip.css">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      color: #1f2937;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 36px 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+    h1 {
+      font-size: 26px;
+      margin-top: 0;
+      color: #0f172a;
+    }
+    .badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      margin-bottom: 16px;
+    }
+    p {
+      margin-bottom: 1.25em;
+      font-size: 16px;
+      color: #334155;
+    }
+    .card {
+      background: #f1f5f9;
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    button, .btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.15s ease;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    button.secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+    button.secondary:hover {
+      background: #cbd5e1;
+    }
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      font-family: inherit;
+    }
+    .custom-output {
+      margin-top: 12px;
+      padding: 14px;
+      background: white;
+      border-radius: 8px;
+      border: 1px dashed #cbd5e1;
+      min-height: 40px;
+    }
+    /* Dark mode toggle demo */
+    body.dark {
+      background-color: #0f172a;
+      color: #f1f5f9;
+    }
+    body.dark .container {
+      background: #1e293b;
+      border-color: #334155;
+    }
+    body.dark h1 {
+      color: #f8fafc;
+    }
+    body.dark p {
+      color: #cbd5e1;
+    }
+    body.dark .card {
+      background: #0f172a;
+    }
+    body.dark textarea {
+      background: #1e293b;
+      color: #f8fafc;
+      border-color: #475569;
+    }
+    body.dark .custom-output {
+      background: #1e293b;
+      border-color: #475569;
+    }
+    body.dark button.secondary {
+      background: #334155;
+      color: #f1f5f9;
+    }
+    body.dark button.secondary:hover {
+      background: #475569;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">Demo Thư Viện</span>
+    <h1>Vietnamese Bible Tooltip</h1>
+    <p>
+      Rê chuột (hover trên máy tính) hoặc chạm (tap trên điện thoại) vào bất kỳ đoạn trích dẫn Kinh Thánh nào bên dưới để xem popup hiển thị câu Kinh Thánh tiếng Việt tự động.
+    </p>
+
+    <div class="article-content">
+      <p>
+        Trong Tân Ước, câu gốc đầu tiên mở đầu cho Phúc Âm là <strong>Ma-thi-ơ 1:1</strong>, ghi lại gia phổ của Chúa Cứu Thế. Tình yêu thương vĩ đại của Đức Chúa Trời dành cho nhân loại được tóm gọn qua câu Kinh Thánh quen thuộc <strong>Giăng 3:16-17</strong>, nhắc nhở chúng ta về sự sống đời đời.
+      </p>
+
+      <p>
+        Sách Khải Tượng mô tả sự sáng tạo ban đầu trong <strong>Sáng Thế Ký 1:1-3</strong> khi Đức Chúa Trời phán ánh sáng xuất hiện. Dù trong hoạn nạn, Cơ Đốc nhân vẫn vững lòng vì Lời Chúa trong <strong>Rô-ma 8:28</strong> khẳng định mọi sự hiệp lại làm ích cho kẻ yêu mến Ngài.
+      </p>
+
+      <p>
+        Về tình yêu thương, sứ đồ Phao-lô đã viết một trường ca bất hủ tại <strong>1 Cô-rinh-tô 13:4-8</strong>. Khi tìm kiếm sự an ủi và bình an trong tâm hồn, chúng ta thường đọc <strong>Thi Thiên 23</strong>, hoặc trông đợi lời hứa về trời mới đất mới trong <strong>Khải Huyền 21:4</strong>.
+      </p>
+
+      <p>
+        Thư viện cũng nhận diện tốt các dạng viết tắt như <strong>Mt 1:1</strong>, <strong>Stk 1:1</strong>, <strong>1Cr 13:4</strong>, hay theo cách ghi nhận của Công giáo như <strong>Ga 3, 16</strong>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top: 0; font-size: 16px;">Thử nghiệm với văn bản tùy ý của bạn:</h3>
+      <textarea id="customInput" rows="3" placeholder="Nhập văn bản có chứa các câu như: Ma-thi-ơ 28:19-20, Phi-líp 4:13, Giăng 14:6..."></textarea>
+      <div class="controls">
+        <button id="btnScanCustom">Quét văn bản vừa nhập</button>
+        <button class="secondary" id="btnToggleTheme">Đổi Giao Diện Sáng / Tối</button>
+      </div>
+      <div id="customOutput" class="custom-output">
+        Văn bản sau khi quét sẽ xuất hiện ở đây...
+      </div>
+    </div>
+  </div>
+
+  <script src="../dist/vietnamese-bible-tooltip.iife.js"></script>
+  <script>
+    // 1. Khởi tạo thư viện trên phần nội dung bài viết (mặc định bản dịch VI2010)
+    const vb = VietnameseBibleTooltip.init({
+      target: '.article-content',
+      showCopyButton: true,
+      showChapterLink: true,
+    });
+
+    // 2. Demo quét văn bản tùy biến người dùng nhập
+    const customInput = document.getElementById('customInput');
+    const customOutput = document.getElementById('customOutput');
+    const btnScan = document.getElementById('btnScanCustom');
+
+    btnScan.addEventListener('click', () => {
+      const text = customInput.value.trim();
+      if (!text) return;
+      customOutput.textContent = text;
+      // Quét và kích hoạt tooltip cho vùng mới
+      vb.scan(customOutput);
+    });
+
+    // 3. Demo chuyển đổi Dark / Light mode
+    const btnTheme = document.getElementById('btnToggleTheme');
+    btnTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      document.documentElement.setAttribute('data-vb-theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

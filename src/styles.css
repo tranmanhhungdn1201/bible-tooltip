@@ -1,0 +1,280 @@
+:root {
+  --vb-accent: #2563eb;
+  --vb-accent-hover: #1d4ed8;
+  --vb-accent-light: #eff6ff;
+  --vb-bg: #ffffff;
+  --vb-text: #1f2937;
+  --vb-text-muted: #6b7280;
+  --vb-border: #e5e7eb;
+  --vb-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  --vb-radius: 12px;
+  --vb-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --vb-z-index: 999999;
+  --vb-max-width: 380px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-vb-theme="light"]) {
+    --vb-accent: #3b82f6;
+    --vb-accent-hover: #60a5fa;
+    --vb-accent-light: #1e3a8a33;
+    --vb-bg: #1e293b;
+    --vb-text: #f3f4f6;
+    --vb-text-muted: #94a3b8;
+    --vb-border: #334155;
+    --vb-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  }
+}
+
+:root[data-vb-theme="dark"] {
+  --vb-accent: #3b82f6;
+  --vb-accent-hover: #60a5fa;
+  --vb-accent-light: #1e3a8a33;
+  --vb-bg: #1e293b;
+  --vb-text: #f3f4f6;
+  --vb-text-muted: #94a3b8;
+  --vb-border: #334155;
+  --vb-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+}
+
+/* Inline reference styling */
+.vb-ref {
+  color: var(--vb-accent);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  border-radius: 2px;
+  padding: 0 2px;
+  display: inline-block;
+}
+
+.vb-ref:hover,
+.vb-ref:focus-visible {
+  color: var(--vb-accent-hover);
+  background-color: var(--vb-accent-light);
+  text-decoration-style: solid;
+  outline: none;
+}
+
+.vb-ref.vb-active {
+  background-color: var(--vb-accent-light);
+}
+
+/* Floating tooltip container */
+.vb-tooltip {
+  position: absolute;
+  z-index: var(--vb-z-index);
+  width: calc(100vw - 32px);
+  max-width: var(--vb-max-width);
+  background-color: var(--vb-bg);
+  color: var(--vb-text);
+  border: 1px solid var(--vb-border);
+  border-radius: var(--vb-radius);
+  box-shadow: var(--vb-shadow);
+  font-family: var(--vb-font);
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px) scale(0.98);
+  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.18s;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.vb-tooltip * {
+  box-sizing: border-box;
+}
+
+.vb-tooltip.vb-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Header */
+.vb-tooltip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--vb-border);
+  gap: 8px;
+}
+
+.vb-tooltip-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.vb-tooltip-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--vb-accent);
+}
+
+.vb-tooltip-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background-color: var(--vb-accent-light);
+  color: var(--vb-accent);
+}
+
+.vb-tooltip-close {
+  background: transparent;
+  border: none;
+  color: var(--vb-text-muted);
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.vb-tooltip-close:hover {
+  color: var(--vb-text);
+  background-color: var(--vb-accent-light);
+}
+
+/* Content body */
+.vb-tooltip-body {
+  padding: 12px 14px;
+  max-height: 280px;
+  overflow-y: auto;
+  font-size: 13.5px;
+  color: var(--vb-text);
+}
+
+.vb-tooltip-verse {
+  margin-bottom: 6px;
+}
+
+.vb-tooltip-verse:last-child {
+  margin-bottom: 0;
+}
+
+.vb-tooltip-verse-num {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--vb-accent);
+  vertical-align: super;
+  margin-right: 4px;
+}
+
+/* Loading & error states */
+.vb-tooltip-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--vb-text-muted);
+  font-size: 13px;
+  padding: 6px 0;
+}
+
+.vb-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--vb-border);
+  border-top-color: var(--vb-accent);
+  border-radius: 50%;
+  animation: vb-spin 0.6s linear infinite;
+}
+
+@keyframes vb-spin {
+  to { transform: rotate(360deg); }
+}
+
+.vb-tooltip-error {
+  color: #dc2626;
+  font-size: 13px;
+}
+
+/* Footer */
+.vb-tooltip-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  border-top: 1px solid var(--vb-border);
+  background-color: rgba(0, 0, 0, 0.02);
+  border-bottom-left-radius: var(--vb-radius);
+  border-bottom-right-radius: var(--vb-radius);
+  font-size: 12px;
+}
+
+.vb-btn-link {
+  color: var(--vb-text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  transition: color 0.15s ease;
+}
+
+.vb-btn-link:hover {
+  color: var(--vb-accent);
+}
+
+.vb-btn-copy {
+  background: transparent;
+  border: 1px solid var(--vb-border);
+  color: var(--vb-text-muted);
+  font-size: 11.5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.vb-btn-copy:hover {
+  color: var(--vb-text);
+  border-color: var(--vb-accent);
+  background-color: var(--vb-accent-light);
+}
+
+.vb-btn-copy.vb-copied {
+  color: #16a34a;
+  border-color: #86efac;
+  background-color: #f0fdf4;
+}
+
+/* Arrow */
+.vb-tooltip-arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--vb-bg);
+  border: 1px solid var(--vb-border);
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.vb-tooltip[data-placement="top"] .vb-tooltip-arrow {
+  bottom: -6px;
+  border-top: none;
+  border-left: none;
+}
+
+.vb-tooltip[data-placement="bottom"] .vb-tooltip-arrow {
+  top: -6px;
+  border-bottom: none;
+  border-right: none;
+}

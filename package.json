@@ -1,0 +1,34 @@
+{
+  "name": "vietnamese-bible-tooltip",
+  "version": "1.0.0",
+  "description": "Thư viện JavaScript tự động nhận diện câu trích dẫn Kinh Thánh tiếng Việt và hiển thị popup đọc khi hover",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "style": "dist/vietnamese-bible-tooltip.css",
+  "unpkg": "dist/vietnamese-bible-tooltip.iife.js",
+  "jsdelivr": "dist/vietnamese-bible-tooltip.iife.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "bible",
+    "vietnamese",
+    "kinh-thanh",
+    "tooltip",
+    "popup",
+    "reftagger",
+    "scripture",
+    "tieng-viet"
+  ],
+  "author": "Hung Tran",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}
